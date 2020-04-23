@@ -1,0 +1,136 @@
+openapi: 3.0.1
+info:
+  title: Gear Temperature Service
+  description: Gear Temperature Service
+  version: "1.0"
+servers:
+  - url: "https://escalator-functions-az-204-exam.azurewebsites.net"
+paths:
+  /api/DriveGearTemperatureService:
+    post:
+      description: Gear Temperature Service
+      parameters:
+        - name: x-functions-key
+          in: header
+          schema:
+            type: string
+          example: keyhere
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                readings:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      driveGearId:
+                        type: integer
+                      temperature:
+                        type: integer
+                      timestamp:
+                        type: integer
+            examples:
+              "0":
+                value: |-
+                  {
+                      "readings": [
+                          {
+                              "driveGearId": 1,
+                              "timestamp": 1534263995,
+                              "temperature": 25
+                          },
+                          {
+                              "driveGearId": 3,
+                              "timestamp": 1534264048,
+                              "temperature": 43
+                          },
+                          {
+                              "driveGearId": 18,
+                              "timestamp": 1534264050,
+                              "temperature": 51
+                          }
+                      ]
+                  }
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json; charset=utf-8:
+              schema:
+               type: object
+               properties:
+                  readings:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        driveGearId:
+                          type: integer
+                        temperature:
+                          type: integer
+                        timestamp:
+                          type: integer
+                        status:
+                          type: string
+              examples: 
+                "0":
+                  value: |-
+                    {
+                    "readings": [
+                        {
+                          "driveGearId": 1,
+                          "timestamp": 1534263995,
+                          "temperature": 25,
+                          "status": "OK"
+                        },
+                        {
+                          "driveGearId": 3,
+                          "timestamp": 1534264048,
+                          "temperature": 43,
+                          "status": "CAUTION"
+                        },
+                         {
+                          "driveGearId": 18,
+                          "timestamp": 1534264050,
+                          "temperature": 51,
+                          "status": "DANGER"
+                        }
+                      ]
+                    }
+        "400":
+          description: Bad request
+          content:
+            application/json; charset=utf-8:
+              schema:
+                type: object
+                properties:
+                  readings:
+                    type: string
+              examples: 
+                "0":
+                  value: |-
+                    {
+                    "readings": "Please send an array of readings in the request body"
+                    }
+        "500":
+          description: Internal error
+          content:
+            application/json; charset=utf-8:
+              schema:
+                type: object
+                properties:
+                  readings:
+                    type: string
+              examples: 
+                "0":
+                  value: |-
+                    {
+                    "readings": "Internal error happened. Please try again later"
+                    }
+      servers:
+        - url: "https://escalator-functions-az-204-exam.azurewebsites.net"
+    servers:
+      - url: "https://escalator-functions-az-204-exam.azurewebsites.net"

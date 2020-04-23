@@ -1,0 +1,45 @@
+{
+  "bindings": [
+    {
+      "authLevel": "function",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "res"
+    },
+    {
+      "type": "cosmosDB",
+      "direction": "in",
+      "name": "bookmarkdocument",
+      "databaseName": "func-io-learn-db",
+      "collectionName": "Bookmarks",
+      "connectionStringSetting": "COSMOSDB_CONNECTION",
+      "id": "{id}",
+      "partitionKey": "{id}"
+    },
+    {
+      "type": "cosmosDB",
+      "direction": "out",
+      "name": "newbookmark",
+      "databaseName": "func-io-learn-db",
+      "collectionName": "Bookmarks",
+      "createIfNotExists": "false",
+      "connectionStringSetting": "COSMOSDB_CONNECTION",
+      "partitionKey": "{id}"
+    },
+    {
+      "type": "queue",
+      "direction": "out",
+      "name": "newmessage",
+      "queueName": "bookmarks-post-process",
+      "connection": "STORAGE_CONNECTION"
+    }
+  ]
+}

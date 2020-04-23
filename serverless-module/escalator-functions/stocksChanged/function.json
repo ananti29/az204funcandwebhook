@@ -1,0 +1,22 @@
+{
+  "bindings": [
+    {
+      "type": "cosmosDBTrigger",
+      "name": "documents",
+      "direction": "in",
+      "leaseCollectionName": "Leases",
+      "connectionStringSetting": "COSMOSDB_CONNECTION",
+      "databaseName": "func-io-learn-db",
+      "collectionName": "Stocks",
+      "createLeaseCollectionIfNotExists": "false",
+      "feedPollDelay": 500
+    },
+    {
+      "type": "signalR",
+      "direction": "out",
+      "name": "signalRMessages",
+      "hubName": "stocks",
+      "connectionStringSetting": "SIGNALR_CONNECTION"
+    }
+  ]
+}

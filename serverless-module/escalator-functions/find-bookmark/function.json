@@ -1,0 +1,26 @@
+{
+  "bindings": [
+    {
+      "authLevel": "function",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "methods": ["get"]
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "res"
+    },
+    {
+      "type": "cosmosDB",
+      "direction": "in",
+      "name": "bookmarkdocument",
+      "databaseName": "func-io-learn-db",
+      "collectionName": "Bookmarks",
+      "connectionStringSetting": "COSMOSDB_CONNECTION",
+      "id": "{id}",
+      "partitionKey": "{id}"
+    }
+  ]
+}

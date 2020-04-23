@@ -1,0 +1,17 @@
+{
+  "name": "escalator-functions",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "func start",
+    "test": "echo \"No tests yet...\""
+  },
+  "dependencies": {
+    "durable-functions": "^1.4.1",
+    "moment": "^2.24.0",
+    "opencollective-postinstall": "^2.0.2"
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0"
+  }
+}
