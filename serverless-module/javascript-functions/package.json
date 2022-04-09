@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "durable-functions": "^1.4.1",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "opencollective-postinstall": "^2.0.2"
   },
   "devDependencies": {
